@@ -37,13 +37,27 @@ fi
 tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT
 
-printf 'Downloading %s...\n' "$asset"
-curl -fL --retry 3 --connect-timeout 15 \
-  "${base_url}/${asset}" -o "${tmp_dir}/${asset}"
-curl -fL --retry 3 --connect-timeout 15 \
+curl_args=(
+  -fL
+  --retry "${DROID_BYOK_DOWNLOAD_RETRIES:-8}"
+  --retry-delay 2
+  --connect-timeout "${DROID_BYOK_CONNECT_TIMEOUT:-30}"
+)
+if curl --help all 2>/dev/null | grep -q -- '--retry-all-errors'; then
+  curl_args+=(--retry-all-errors)
+fi
+
+printf 'Downloading checksum for %s...\n' "$asset"
+curl "${curl_args[@]}" \
   "${base_url}/${asset}.sha256" -o "${tmp_dir}/${asset}.sha256"
 
 expected="$(awk '{print $1}' "${tmp_dir}/${asset}.sha256")"
+[[ "$expected" =~ ^[0-9a-fA-F]{64}$ ]] || fail "release checksum is invalid"
+
+printf 'Downloading %s...\n' "$asset"
+curl "${curl_args[@]}" \
+  "${base_url}/${asset}" -o "${tmp_dir}/${asset}"
+
 if command -v sha256sum >/dev/null 2>&1; then
   actual="$(sha256sum "${tmp_dir}/${asset}" | awk '{print $1}')"
 elif command -v shasum >/dev/null 2>&1; then
