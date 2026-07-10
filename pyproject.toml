@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "droid-byok"
+version = "0.3.1"
+description = "A terminal UI and CLI for managing Factory Droid BYOK providers and models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "despriber" },
+]
+keywords = ["droid", "byok", "tui", "llm", "provider"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Utilities",
+]
+dependencies = [
+  "rich>=13.7",
+  "textual>=8.2,<9",
+]
+
+[project.scripts]
+droid-byok = "droid_byok.core:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

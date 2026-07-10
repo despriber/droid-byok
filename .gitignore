@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+dist-binary/
+release-assets/
+*.spec
+
+# Local credentials and generated configuration
+providers.json
+settings.json
+backups/
+.env
+*.log
