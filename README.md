@@ -1,5 +1,7 @@
 # droid-byok
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 `droid-byok` is a full-screen TUI and CLI for managing Factory Droid BYOK
 providers, upstream models, and the default model stored in
 `~/.factory/settings.json`.
@@ -57,7 +59,7 @@ python3 -m pip install -r requirements.txt
 After the repository is published on GitHub, users can install it directly:
 
 ```bash
-pipx install git+https://github.com/<your-github-user>/droid-byok.git
+pipx install git+https://github.com/despriber/droid-byok.git
 ```
 
 They can also install a wheel downloaded from GitHub Releases:
@@ -124,7 +126,7 @@ cd /home/despriber/droid-byok
 git init -b main
 git add .
 git commit -m "Initial release"
-git remote add origin git@github.com:<your-github-user>/droid-byok.git
+git remote add origin git@github.com:despriber/droid-byok.git
 git push -u origin main
 
 git tag v0.3.1
