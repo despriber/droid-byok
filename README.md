@@ -34,7 +34,7 @@ Install a specific release or choose another destination:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/despriber/droid-byok/main/install.sh | \
-  DROID_BYOK_VERSION=v0.3.1 bash
+  DROID_BYOK_VERSION=v0.3.2 bash
 ```
 
 The installer detects the OS and CPU architecture, downloads the matching
@@ -65,7 +65,7 @@ pipx install git+https://github.com/despriber/droid-byok.git
 They can also install a wheel downloaded from GitHub Releases:
 
 ```bash
-pipx install droid_byok-0.3.1-py3-none-any.whl
+pipx install droid_byok-0.3.2-py3-none-any.whl
 ```
 
 ## Usage
@@ -129,8 +129,8 @@ git commit -m "Initial release"
 git remote add origin git@github.com:despriber/droid-byok.git
 git push -u origin main
 
-git tag v0.3.1
-git push origin v0.3.1
+git tag v0.3.2
+git push origin v0.3.2
 ```
 
 The included GitHub Actions workflow automatically builds and uploads release
@@ -140,8 +140,8 @@ enough for normal releases.
 To upload the locally built packages manually with GitHub CLI instead:
 
 ```bash
-gh release create v0.3.1 dist/* \
-  --title "droid-byok v0.3.1" \
+gh release create v0.3.2 dist/* \
+  --title "droid-byok v0.3.2" \
   --notes "Initial public release"
 ```
 

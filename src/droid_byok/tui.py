@@ -90,7 +90,7 @@ def provider_rows(store: core.Store, query: str = "") -> list[tuple[Any, ...]]:
 def live_model_rows(settings: dict[str, Any]) -> list[tuple[Any, ...]]:
     default = core.current_default_model(settings)
     rows: list[tuple[Any, ...]] = []
-    for m in settings.get("customModels") or []:
+    for index, m in enumerate(settings.get("customModels") or []):
         mid = str(m.get("id") or "")
         is_def = mid == default
         mark = Text("★", style="bold #facc15") if is_def else Text(" ", style="#334155")
@@ -102,10 +102,16 @@ def live_model_rows(settings: dict[str, Any]) -> list[tuple[Any, ...]]:
                 Text(str(m.get("model") or ""), style="#38bdf8"),
                 Text(short(str(m.get("baseUrl") or ""), 28), style="#94a3b8"),
                 Text(short(str(m.get("provider") or ""), 18), style="#64748b"),
-                mid,
+                f"{index}:{mid}",
             )
         )
     return rows
+
+
+def model_id_from_row_key(row_key: str) -> str:
+    """Recover a model ID from the unique key used by live model tables."""
+    index, separator, model_id = row_key.partition(":")
+    return model_id if separator and index.isdigit() else row_key
 
 
 def workspace_status(store: core.Store, settings: dict[str, Any]) -> Text:
@@ -710,7 +716,10 @@ class ModelsScreen(Screen[None]):
         row_key = table.coordinate_to_cell_key(table.cursor_coordinate).row_key
         if row_key is None or row_key.value is None:
             return
-        mid = str(row_key.value)
+        mid = model_id_from_row_key(str(row_key.value))
+        if not mid:
+            self.notify("Selected model has no ID", severity="error")
+            return
         try:
             core.set_session_default(mid)
             self.notify(f"Default → {mid}", severity="information")

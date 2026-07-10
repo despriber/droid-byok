@@ -25,4 +25,5 @@ jobs:
       - name: Verify
         run: |
           python -m compileall -q src
+          python -m unittest discover -s tests -v
           droid-byok --version

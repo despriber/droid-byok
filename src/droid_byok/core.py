@@ -34,7 +34,7 @@ except ImportError:  # pragma: no cover
 
 
 APP_NAME = "droid-byok"
-VERSION = "0.3.1"
+VERSION = "0.3.2"
 FACTORY_DIR = Path(os.environ.get("FACTORY_HOME", Path.home() / ".factory"))
 SETTINGS_PATH = Path(os.environ.get("DROID_SETTINGS", FACTORY_DIR / "settings.json"))
 STORE_PATH = Path(os.environ.get("DROID_BYOK_STORE", FACTORY_DIR / "droid-byok" / "providers.json"))

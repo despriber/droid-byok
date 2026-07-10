@@ -36,7 +36,7 @@ curl -fsSL https://raw.githubusercontent.com/despriber/droid-byok/main/install.s
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/despriber/droid-byok/main/install.sh | \
-  DROID_BYOK_VERSION=v0.3.1 bash
+  DROID_BYOK_VERSION=v0.3.2 bash
 ```
 
 安装脚本会自动识别操作系统和 CPU 架构，从 GitHub Releases 下载对应二进制，
@@ -126,15 +126,15 @@ wheel 和源码包会生成在 `dist/` 中。
 Linux/macOS 的 x86_64/arm64 独立二进制，并上传到 GitHub Releases。
 
 ```bash
-git tag v0.3.1
-git push origin v0.3.1
+git tag v0.3.2
+git push origin v0.3.2
 ```
 
 也可以使用 GitHub CLI 手动上传本地构建产物：
 
 ```bash
-gh release create v0.3.1 dist/* \
-  --title "droid-byok v0.3.1" \
+gh release create v0.3.2 dist/* \
+  --title "droid-byok v0.3.2" \
   --notes "Initial public release"
 ```
 
