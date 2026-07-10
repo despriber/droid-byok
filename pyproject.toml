@@ -5,29 +5,60 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "droid-byok"
 version = "0.3.2"
-description = "A terminal UI and CLI for managing Factory Droid BYOK providers and models"
+description = "TUI and CLI for Factory Droid BYOK: manage providers, customModels, and default models in settings.json"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [
   { name = "despriber" },
 ]
-keywords = ["droid", "byok", "tui", "llm", "provider"]
+keywords = [
+  "factory",
+  "factory-droid",
+  "droid",
+  "byok",
+  "bring-your-own-key",
+  "custom-models",
+  "settings-json",
+  "openai-compatible",
+  "anthropic",
+  "llm",
+  "llm-gateway",
+  "model-switcher",
+  "tui",
+  "cli",
+  "textual",
+  "terminal",
+  "provider",
+]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: MacOS",
   "Operating System :: POSIX",
+  "Operating System :: POSIX :: Linux",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development",
+  "Topic :: System :: Systems Administration",
   "Topic :: Utilities",
 ]
 dependencies = [
   "rich>=13.7",
   "textual>=8.2,<9",
 ]
+
+[project.urls]
+Homepage = "https://github.com/despriber/droid-byok"
+Repository = "https://github.com/despriber/droid-byok"
+Issues = "https://github.com/despriber/droid-byok/issues"
+Documentation = "https://github.com/despriber/droid-byok#readme"
+"Factory BYOK" = "https://docs.factory.ai/cli/byok/overview"
+Changelog = "https://github.com/despriber/droid-byok/releases"
 
 [project.scripts]
 droid-byok = "droid_byok.core:main"
